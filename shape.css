@@ -1,0 +1,15 @@
+/* shape.css: "Shape" button: colour boxes, colour dot, area-of-each-side list */
+.rrow.strong span{color:var(--ink); font-weight:600}
+.rrow.strong b{font-size:15px}
+.actions3{display:flex; gap:6px; flex-wrap:wrap; padding-top:6px}
+details summary{cursor:pointer; color:var(--muted); font-size:13px; padding:5px 0}
+.dot{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:7px; vertical-align:-1px}
+.sw{width:34px; height:34px; border-radius:6px; border:2px solid var(--line); cursor:pointer; padding:0}
+.sw[aria-pressed="true"]{border-color:var(--ink); box-shadow:inset 0 0 0 2px var(--surface)}
+
+.mvbox{display:grid; gap:6px; padding-top:8px}
+.mvgrid{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+.mvgrid .mv-x{border-color:var(--ax-x)}
+.mvgrid .mv-y{border-color:var(--ax-y)}
+.mvgrid .mv-z{border-color:var(--ax-z)}
+.mvxyz{display:grid; grid-template-columns:repeat(3,1fr); gap:6px}
