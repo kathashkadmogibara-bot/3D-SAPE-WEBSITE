@@ -1,0 +1,42 @@
+/* add.css: "Add point" button: the X / Y / Z sliders with the ruler marks */
+.axis{display:flex; flex-direction:column; gap:2px; --axc:var(--ax-x)}
+.axis[data-a="y"]{--axc:var(--ax-y)}
+.axis[data-a="z"]{--axc:var(--ax-z)}
+.axtop{display:flex; align-items:center; gap:8px}
+.axl{
+  width:26px; height:26px; flex:none; display:grid; place-items:center; border-radius:4px;
+  background:var(--axc); color:#fff; font:700 13px var(--f-mono);
+}
+.val{
+  flex:1; min-width:0; min-height:36px; padding:0 8px; border:1px solid transparent; border-radius:5px;
+  background:transparent; font:500 16px var(--f-mono); font-variant-numeric:tabular-nums;
+}
+.val:hover{border-color:var(--line)}
+.val:focus{border-color:var(--axc); background:var(--canvas); outline:none}
+.sign{min-height:36px; width:40px; flex:none; border:1px solid var(--line); border-radius:5px; background:var(--surface); font:600 14px var(--f-mono); cursor:pointer}
+
+.rail{position:relative; height:34px}
+.rail::before{
+  content:""; position:absolute; inset:7px 8px; pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent calc(100% - 1px),var(--tick) 0),
+    repeating-linear-gradient(90deg,var(--tick) 0 1px,transparent 1px 5%);
+}
+.rail::after{content:""; position:absolute; left:50%; top:3px; bottom:3px; width:2px; margin-left:-1px; background:var(--ink); opacity:.5; pointer-events:none}
+.rail input[type=range]{
+  position:absolute; inset:0; width:100%; height:100%; margin:0; background:transparent;
+  -webkit-appearance:none; appearance:none; touch-action:pan-y; z-index:1; cursor:ew-resize;
+}
+.rail input[type=range]::-webkit-slider-runnable-track{height:34px; background:transparent}
+.rail input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:16px; height:30px; margin-top:2px; border-radius:4px;
+  background:var(--axc); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--axc);
+}
+.rail input[type=range]::-moz-range-track{height:34px; background:transparent}
+.rail input[type=range]::-moz-range-thumb{width:12px; height:26px; border-radius:4px; background:var(--axc); border:2px solid var(--surface)}
+.scale{display:grid; grid-template-columns:1fr 1fr 1fr; font:500 10px var(--f-mono); color:var(--muted); padding-inline:2px}
+.scale span:nth-child(2){text-align:center}
+.scale span:nth-child(3){text-align:right}
+
+.rg{width:92px; min-height:36px; padding:0 8px; border:1px solid var(--line); border-radius:6px; background:var(--canvas); font:500 13px var(--f-mono)}
+.rg:focus{border-color:var(--accent); outline:none}
