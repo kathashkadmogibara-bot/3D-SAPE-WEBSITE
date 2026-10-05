@@ -1,0 +1,11 @@
+/* measure.css: "Measure" button: length / area / volume tiles and the distance boxes */
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(104px,1fr)); gap:8px}
+.tile{display:flex; flex-direction:column; gap:2px; padding:10px; border:1px solid var(--line); border-radius:6px; background:var(--canvas); min-width:0}
+.tl{font:600 11px var(--f-body); letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.tv{font:700 18px var(--f-mono); font-variant-numeric:tabular-nums; overflow-wrap:anywhere}
+.tv i{font:500 12px var(--f-mono); color:var(--muted); font-style:normal; margin-left:3px}
+.ts{font-size:12px; color:var(--muted)}
+.dist{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px}
+.sel{min-height:44px; width:100%; min-width:0; padding:0 8px; border:1px solid var(--line); border-radius:6px; background:var(--canvas); font-family:var(--f-mono)}
+.dres{font:700 18px var(--f-mono); font-variant-numeric:tabular-nums}
+.dres i{font:500 12px var(--f-mono); color:var(--muted); font-style:normal; margin-left:3px}
