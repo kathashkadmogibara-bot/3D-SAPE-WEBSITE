@@ -1,0 +1,109 @@
+/* core.css: colours, page layout, buttons and the small parts every mode shares */
+/* Layout: full-height drafting table. Canvas stage on top (left on desktop), control panel below (right on desktop).
+   Axis colours are fixed to the 3D convention: X red, Y green, Z blue. Orange accent = the thing you are editing. */
+:root{
+  --bg:#eceff2; --surface:#f8fafb; --canvas:#f4f6f8; --line:#ccd3da; --tick:#9aa6b1;
+  --ink:#14202b; --muted:#5a6773; --accent:#d9480f; --accent-ink:#ffffff; --danger:#b42318;
+  --ax-x:#d0392b; --ax-y:#2b9348; --ax-z:#2563d4;
+  --f-body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1419; --surface:#161e26; --canvas:#0a0f14; --line:#2a3541; --tick:#53616f;
+    --ink:#e8eef3; --muted:#92a0ac; --accent:#ff8a4c; --accent-ink:#1d0f06; --danger:#ff7b6e;
+    --ax-x:#ff6b5b; --ax-y:#4cd07a; --ax-z:#6aa1ff; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1419; --surface:#161e26; --canvas:#0a0f14; --line:#2a3541; --tick:#53616f;
+  --ink:#e8eef3; --muted:#92a0ac; --accent:#ff8a4c; --accent-ink:#1d0f06; --danger:#ff7b6e;
+  --ax-x:#ff6b5b; --ax-y:#4cd07a; --ax-z:#6aa1ff; color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:14px/1.4 var(--f-body);
+  display:flex; flex-direction:column; gap:10px;
+  padding-inline:16px; padding-block:12px;
+  overflow:hidden;
+}
+button,input,select{font:inherit; color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.top{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex:none}
+.top h1{margin:0; font-size:15px; font-weight:700; letter-spacing:.01em}
+.top .units{font:500 11px var(--f-mono); color:var(--muted)}
+
+.app{flex:1; min-height:0; display:flex; flex-direction:column; gap:10px}
+
+.stage{
+  position:relative; flex:1; min-height:180px; min-width:0;
+  background:var(--canvas); border:1px solid var(--line); border-radius:6px; overflow:hidden;
+}
+#cv{position:absolute; inset:0; width:100%; height:100%; display:block; touch-action:none; cursor:grab}
+#cv:active{cursor:grabbing}
+.vtools{position:absolute; top:8px; right:8px; display:flex; gap:6px}
+.vtools button{
+  min-height:30px; padding:0 10px; border-radius:5px; border:1px solid var(--line);
+  background:var(--surface); font:600 12px var(--f-body); cursor:pointer;
+}
+.vtools button[aria-pressed="true"]{border-color:var(--accent); color:var(--accent)}
+.readout{position:absolute; right:10px; bottom:8px; font:500 11px var(--f-mono); color:var(--muted); pointer-events:none}
+
+.panel{
+  flex:none; max-height:54%; overflow:auto; min-width:0;
+  background:var(--surface); border:1px solid var(--line); border-radius:6px;
+  padding:12px; display:flex; flex-direction:column; gap:12px;
+}
+.modes{display:flex; flex-wrap:wrap; gap:8px}
+.modes .btn{flex:1 1 calc(33.333% - 8px); min-width:0; padding:0 4px; font-size:13px; line-height:1.15}
+.btn{
+  min-height:44px; padding:0 12px; border-radius:6px; border:1px solid var(--line);
+  background:var(--surface); font-weight:600; cursor:pointer; min-width:0;
+}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn.danger{color:var(--danger); border-color:var(--danger)}
+.modes .btn[aria-pressed="true"]{background:var(--ink); color:var(--surface); border-color:var(--ink)}
+
+.field{display:flex; flex-direction:column; gap:4px}
+.field label,.lbl{font:600 11px var(--f-body); letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.txt{
+  min-height:44px; width:100%; min-width:0; padding:0 10px; border-radius:6px;
+  border:1px solid var(--line); background:var(--canvas); font-family:var(--f-mono); font-size:14px;
+}
+.txt:focus{border-color:var(--accent); outline:none}
+
+.actions{display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:8px}
+.err{margin:0; color:var(--danger); font-weight:500}
+.note{margin:0; color:var(--muted); font-size:13px}
+.note.ok{color:var(--ink)}
+.note.bad{color:var(--danger)}
+.chips{display:flex; flex-wrap:wrap; gap:6px}
+.pt{
+  display:flex; flex-direction:column; align-items:flex-start; min-height:44px; padding:4px 10px; min-width:0;
+  border:1px solid var(--line); border-radius:6px; background:var(--canvas); cursor:pointer; text-align:left;
+}
+.pt b{font:700 13px var(--f-mono)}
+.pt span{font:500 10px var(--f-mono); color:var(--muted)}
+.pt:hover{border-color:var(--accent)}
+
+.foot{display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap}
+.linkbtn{background:none; border:0; padding:6px 0; color:var(--muted); text-decoration:underline; cursor:pointer; font-size:13px}
+.seg{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.chip{min-height:36px; padding:0 12px; border:1px solid var(--line); border-radius:6px; background:var(--canvas); font:600 13px var(--f-mono); cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink); color:var(--surface); border-color:var(--ink)}
+.grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px}
+.grid3{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px}
+
+@media (min-width:860px){
+  .app{flex-direction:row}
+  .stage{min-height:0}
+  .panel{width:400px; max-height:none}
+}
+@media (prefers-reduced-motion: no-preference){
+  .btn,.pt,.val{transition:border-color .12s}
+}
