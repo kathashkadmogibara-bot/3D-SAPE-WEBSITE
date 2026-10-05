@@ -1,0 +1,9 @@
+/* circle.css: "Circle / Sphere" button: the little result rows and cards */
+.rrow{display:flex; justify-content:space-between; align-items:baseline; gap:8px; padding:5px 0; border-bottom:1px solid var(--line)}
+.rrow span{color:var(--muted); font-size:13px}
+.rrow b{font:700 14px var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; overflow-wrap:anywhere}
+.rrow i{font-style:normal; color:var(--muted); font-weight:500}
+.rcard{border:1px solid var(--line); border-radius:6px; padding:8px 10px; background:var(--canvas)}
+.rhead{display:flex; justify-content:space-between; align-items:baseline}
+.rhead b{font:700 14px var(--f-mono)}
+.rhead span{color:var(--muted); font-size:12px}
