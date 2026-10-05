@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shape Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="core.css">
+<link rel="stylesheet" href="add.css">
+<link rel="stylesheet" href="connect.css">
+<link rel="stylesheet" href="circle.css">
+<link rel="stylesheet" href="shape.css">
+<link rel="stylesheet" href="measure.css">
+</head>
+<body>
+
+<header class="top">
+  <h1>Shape Builder</h1>
+  <span class="units">1 unit = 1 m</span>
+</header>
+
+<main class="app">
+  <section class="stage" id="stage" aria-label="3D graph">
+    <canvas id="cv"></canvas>
+    <div class="vtools">
+      <button id="tAxes" type="button" aria-pressed="false">Axes</button>
+      <button id="tFill" type="button" aria-pressed="true">Fill</button>
+      <button id="tFit" type="button">Fit</button>
+    </div>
+    <div class="readout" id="readout"></div>
+  </section>
+
+  <section class="panel" aria-label="Controls">
+    <nav class="modes">
+      <button class="btn" type="button" data-mode="add" aria-pressed="false">Add point</button>
+      <button class="btn" type="button" data-mode="connect" aria-pressed="false">Connect line</button>
+      <button class="btn" type="button" data-mode="shapes" aria-pressed="false">Circle / Sphere</button>
+      <button class="btn" type="button" data-mode="shape" aria-pressed="false">Shape</button>
+      <button class="btn" type="button" data-mode="measure" aria-pressed="false">Measure</button>
+    </nav>
+    <div id="body"></div>
+  </section>
+</main>
+
+<script src="core.js"></script>
+<script src="add.js"></script>
+<script src="connect.js"></script>
+<script src="circle.js"></script>
+<script src="shape.js"></script>
+<script src="measure.js"></script>
+</body>
+</html>
