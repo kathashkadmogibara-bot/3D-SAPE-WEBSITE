@@ -1,0 +1,14 @@
+/* connect.css: "Connect line" button: the two name boxes and the selected-line card */
+.pair{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:8px; align-items:end}
+.pair .dash{padding-bottom:12px; color:var(--muted); font-family:var(--f-mono)}
+.pair .field{min-width:0}
+
+.lineinfo{display:flex; flex-direction:column; gap:2px}
+.lineinfo .big{font:700 20px var(--f-mono)}
+
+.cutbox{display:grid; gap:8px; padding:10px 0}
+.mvgrid{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+.mvgrid .mv-x{border-color:var(--ax-x)}
+.mvgrid .mv-y{border-color:var(--ax-y)}
+.mvgrid .mv-z{border-color:var(--ax-z)}
+.mvxyz{display:grid; grid-template-columns:repeat(3,1fr); gap:6px}
